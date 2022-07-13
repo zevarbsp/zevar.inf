@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\ProfileController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,15 +11,16 @@ use App\Http\Controllers\User\ProfileController;
 |
 */
 
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Auth::routes();
 
-require __DIR__.'/auth.php';
-require __DIR__.'/user.php';
-
+Route::get('/player', 'PlayerController@index')->name('player')->middleware('player');
+Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
+Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin')->middleware('superadmin');
+Route::get('/scout', 'ScoutController@index')->name('scout')->middleware('scout');
+Route::get('/team', 'TeamController@index')->name('team')->middleware('team');
+Route::get('/academy', 'AcademicController@index')->name('academy')->middleware('academy');
+Route::get('/home', 'AcademicController@index')->name('home');
