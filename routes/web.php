@@ -23,4 +23,4 @@ Route::get('/superadmin', 'SuperAdminController@index')->name('superadmin')->mid
 Route::get('/scout', 'ScoutController@index')->name('scout')->middleware('scout');
 Route::get('/team', 'TeamController@index')->name('team')->middleware('team');
 Route::get('/academy', 'AcademicController@index')->name('academy')->middleware('academy');
-// Route::get('/home', 'AcademicController@index')->name('home');
+Route::get('/home', 'AcademicController@index')->name('home');
